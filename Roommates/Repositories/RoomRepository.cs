@@ -89,15 +89,17 @@ namespace Roommates.Repositories
     
         public Room GetById(int id) //we're passing in a single room id and this will give us a single room object
         {
-            // 
-            using (SqlConnection conn = Connection)
+            // SqlConnection and SqlCommand are data type
+            using (SqlConnection conn = Connection) //instantiate a sql connection
             {
-                conn.Open();
-                using (SqlCommand cmd = conn.CreateCommand())
+                conn.Open(); //opened the Connection
+                //after we open it, we will instantiate this CreateCommand() method
+                using (SqlCommand cmd = conn.CreateCommand()) //creating a container of data(object)
+                    //once we create this cmd object
                 {
-                    cmd.CommandText = "SELECT Name, MaxOccupancy FROM Room WHERE Id = @id";
-                    cmd.Parameters.AddWithValue("@id", id);
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    cmd.CommandText = "SELECT Name, MaxOccupancy FROM Room WHERE Id = @id"; //we are setting the values of the object grabbing it from the room the user chose
+                    cmd.Parameters.AddWithValue("@id", id); // @id is declaring a varaible
+                    SqlDataReader reader = cmd.ExecuteReader(); //and we excute the object
 
                     Room room = null;
 
@@ -138,6 +140,7 @@ namespace Roommates.Repositories
             }
 
             // when this method is finished we can look in the database and see the new room.
+            return room;
         }
     }
 }
