@@ -17,16 +17,20 @@ namespace Roommates.Repositories
         /// <summary>
         ///  A "connection string" is the address of the database.
         /// </summary>
-        private string _connectionString;
+        private string _connectionString; //we're defining a field here
 
 
         /// <summary>
         ///  This constructor will be invoked by subclasses.
         ///  It will save the connection string for later use.
         /// </summary>
-        public BaseRepository(string connectionString)
+        
+        public BaseRepository(string connectionString) //this is a constructor
         {
-            _connectionString = connectionString;
+            _connectionString = connectionString;  //"server=localhost\SQLExpress;database=Roommates;integrated security=true"
+            //so connectionString is the address of the database which our database is in our localhost which has SQLExpress(which is sequel code)
+            //and we're saying find the Roommates kind of picture database in our localhost
+            //And set that to _connectionString
         }
 
 
